@@ -4,8 +4,6 @@ package playerTests
 import munit.FunSuite
 class PlayerTests extends Funsuite {
   val name = "Player"
-  val hand: Array[Card] = Array[Card]()
-  // val deck: Array[Card] = Array[Card]() create a deck by default
 
   var player: Player = _
   override def beforeEach(context: BeforeEach): Unit = {
@@ -26,8 +24,8 @@ class PlayerTests extends Funsuite {
     assertEquals(player.gems, 0)
   }
 
-  test("A Player has a hand (of cards)") {
-    assertEquals(player.hand, hand)
+  test("A Player initially has a hand (of 0 cards)") {
+    assertEquals(player.hand, Array[Card]())
   }
 
   test("A Player can draw cards") {
@@ -57,5 +55,14 @@ class PlayerTests extends Funsuite {
     player.drawCard()
     player.drawCard()
     assertEquals(player.deck.length, 22)
+  }
+
+  test("A Player can't draw cards if it has 10 in hand") {
+    for (i <- 1 to 10) {
+      player.drawCard()
+    }
+    assertEquals(player.deck.length, 15)
+    player.drawCard()
+    assertEquals(player.deck.length, 15)
   }
 }
