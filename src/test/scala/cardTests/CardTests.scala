@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package cardTests
 
 import munit.FunSuite
-class CardTests extends Funsuite {
+class CardTests extends FunSuite {
   val name = "Card"
   val strength = 5
 
