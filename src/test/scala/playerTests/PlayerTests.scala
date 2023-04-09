@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package playerTests
 
 import munit.FunSuite
-class PlayerTests extends Funsuite {
+class PlayerTests extends FunSuite {
   val name = "Player"
 
   var player: Player = _
