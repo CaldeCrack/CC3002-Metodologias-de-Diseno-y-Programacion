@@ -28,7 +28,7 @@ class CardTests extends FunSuite {
     assertEquals(card.name, name)
   }
 
-  test("A Card has a strength") {
+  test("A Card has a strength (by default is 0)") {
     assertEquals(defaultCard.strength, 0)
     assertEquals(card.strength, strength)
   }
