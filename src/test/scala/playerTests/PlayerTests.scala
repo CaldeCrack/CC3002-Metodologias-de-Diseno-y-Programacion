@@ -1,16 +1,23 @@
 package cl.uchile.dcc
 package playerTests
 
-import cl.uchile.dcc.card.Card
-import cl.uchile.dcc.player.Player
+import card.Card
+import player.Player
+
 import munit.FunSuite
 class PlayerTests extends FunSuite {
   val name = "Player"
 
   var player: Player = _
   override def beforeEach(context: BeforeEach): Unit = {
-    player = new Player(name, deck = new Array[Card](25))
+    player = new Player(name, deck = List())
   }
+  test("equals") {
+    val player2 = new Player("Player", deck = List())
+    assertEquals(player, player)
+    assert(player.equals(player2))
+  }
+
   test("A Player has a name") {
     assertEquals(player.name, name)
   }
@@ -20,36 +27,37 @@ class PlayerTests extends FunSuite {
   }
 
   test("A Player can lose gems") {
-    player.loseGems(1)
+    player.loseGems()
     assertEquals(player.gems, 1)
-    player.loseGems(1)
+    player.loseGems()
     assertEquals(player.gems, 0)
   }
 
   test("A Player initially has an empty hand (of max 10 cards)") {
     assertEquals(player.hand.length, 10)
     for (i <- 0 to 9) {
-      assert(Option(player.hand(i)).isEmpty)
+      assert(player.hand.lift(i).isEmpty)
     }
   }
 
   test("A Player can draw cards") {
-    assert(Option(player.hand(0)).isEmpty)
+    assert(player.hand.isEmpty)
     player.drawCard()
-    assert(Option(player.hand(0)).isDefined)
+    assert(player.hand.nonEmpty)
     player.drawCard()
     player.drawCard()
-    assert(Option(player.hand(2)).isDefined)
+    assert(player.hand.lift(2).isDefined)
   }
 
   test("A Player can't have more than 10 cards in hand") {
-    for (i <- 0 to 9) {
+    for (_ <- 0 to 9) {
       player.drawCard()
     }
-    val lastOne: Option[Card] = Some(player.hand(9))
-    assert(Option(player.hand(9)).isDefined)
+    val lastOne: Option[Card] = player.hand.lift(9)
+    assert(player.hand.lift(9).isDefined)
     player.drawCard()
-    assertEquals(player.hand(9), lastOne.get)
+    assertEquals(player.hand.lift(9), lastOne)
+    assert(player.hand.lift(10).isEmpty)
   }
 
   test("A Player initially has a deck of 25 cards") {
@@ -58,18 +66,19 @@ class PlayerTests extends FunSuite {
 
   test("A Player's deck can decrease its amount of cards") {
     player.drawCard()
-    assert(Option(player.deck(24)).isEmpty)
+    assert(player.deck.lift(24).isEmpty)
     player.drawCard()
     player.drawCard()
-    assert(Option(player.deck(22)).isEmpty)
+    assert(player.deck.lift(22).isEmpty)
   }
 
   test("A Player can't draw cards if it has 10 in hand") {
-    for (i <- 1 to 10) {
+    for (_ <- 0 to 9) {
       player.drawCard()
     }
-    assert(Option(player.deck(14)).isDefined)
+    assertEquals(player.hand.length, 10)
+    assert(player.deck.lift(14).isDefined)
     player.drawCard()
-    assert(Option(player.deck(14)).isDefined)
+    assert(player.deck.lift(14).isDefined)
   }
 }
