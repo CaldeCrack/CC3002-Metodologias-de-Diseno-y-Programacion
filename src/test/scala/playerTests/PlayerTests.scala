@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package playerTests
 
+import scala.collection.mutable.ListBuffer
 import card.Card
 import player.Player
 
@@ -10,10 +11,10 @@ class PlayerTests extends FunSuite {
 
   var player: Player = _
   override def beforeEach(context: BeforeEach): Unit = {
-    player = new Player(name, deck = List())
+    player = new Player(name, deck = ListBuffer())
   }
   test("equals") {
-    val player2 = new Player("Player", deck = List())
+    val player2 = new Player("Player", deck = ListBuffer())
     assertEquals(player, player)
     assert(player.equals(player2))
   }
