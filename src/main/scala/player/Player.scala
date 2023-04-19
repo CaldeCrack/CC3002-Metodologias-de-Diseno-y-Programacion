@@ -3,7 +3,30 @@ package player
 
 import scala.collection.mutable.ListBuffer
 import card.Card
-class Player(val name: String, var gems: Int = 2, var hand: ListBuffer[Card] = ListBuffer(), var deck: ListBuffer[Card]) {
+
+/** A class representing a Player.
+ *
+ * The Player is defined by its name, gems, which must be two initially, hand and deck of cards.
+ *
+ * @param name The name of the Player.
+ * @param deck The cards in the deck of the Player.
+ *
+ * @constructor Creates a new Player with the specified name and a deck of cards.
+ *
+ * @example
+ * {{{
+ * val player = new Player("Andres")
+ * var name = player.name
+ * println(s"The name of the player is $name")
+ * }}}
+ *
+ * @author Andres Calderon
+ * @since 1.0.0
+ * @version 1.0.0
+ */
+class Player(val name: String, var deck: ListBuffer[Card]) {
+  var gems: Int = 2
+  var hand: ListBuffer[Card] = ListBuffer()
   private var maxHand: Boolean = false
   private var emptyDeck: Boolean = false
   private var curHand: Int = 9
