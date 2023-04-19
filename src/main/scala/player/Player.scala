@@ -36,7 +36,8 @@ class Player(val name: String, var deck: ListBuffer[Card]) {
   override def equals(o: Any): Boolean = {
     if(this.getClass.getName == o.getClass.getName){
       val otherPlayer = o.asInstanceOf[Player]
-      this.name == otherPlayer.name
+      this.name == otherPlayer.name &&
+      this.deck == otherPlayer.deck
     } else false
   }
 
@@ -45,12 +46,14 @@ class Player(val name: String, var deck: ListBuffer[Card]) {
   }
 
   def drawCard(): Unit = {
-    if(!maxHand){
+    if (!maxHand) {
       this.hand.addOne(deck.last)
-      curHand+=1
+      curHand += 1
       this.deck.remove(curDeck)
-      curDeck-=1
+      curDeck -= 1
     }
-    if(curHand == 9) {maxHand = true}
+    if (curHand == 9) {
+      maxHand = true
+    }
   }
 }

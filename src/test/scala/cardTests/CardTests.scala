@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package cardTests
 
-import cl.uchile.dcc.card.Card
+import card.Card
 import munit.FunSuite
 class CardTests extends FunSuite {
   val name = "Card"
@@ -13,6 +13,16 @@ class CardTests extends FunSuite {
     defaultCard = new Card(name)
     card = new Card(name, strength)
   }
+
+  test("equals") {
+    val card2 = new Card("Card")
+    val card3 = new Card("Card", 5)
+    assertEquals(card, card)
+    assert(defaultCard.equals(card2))
+    assert(!defaultCard.equals(card3))
+    assert(card.equals(card3))
+  }
+
   test("A Card has a name") {
     assertEquals(defaultCard.name, name)
     assertEquals(card.name, name)
@@ -39,5 +49,12 @@ class CardTests extends FunSuite {
   test("A Card can set its strength to 1") {
     card.lowStrength()
     assertEquals(card.strength, 1)
+  }
+
+  test("A Card can reset its strength to its original value") {
+    card.addStrength()
+    assertEquals(card.strength, 6)
+    card.resetStrength()
+    assertEquals(card.strength, 5)
   }
 }

@@ -4,7 +4,6 @@ package playerTests
 import scala.collection.mutable.ListBuffer
 import card.Card
 import player.Player
-
 import munit.FunSuite
 class PlayerTests extends FunSuite {
   val name = "Player"
@@ -63,6 +62,7 @@ class PlayerTests extends FunSuite {
   }
 
   test("A Player's deck can decrease its amount of cards") {
+    assert(player.deck.lift(24).isDefined)
     player.drawCard()
     assert(player.deck.lift(24).isEmpty)
     player.drawCard()
