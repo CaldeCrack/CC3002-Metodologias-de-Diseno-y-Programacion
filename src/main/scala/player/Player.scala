@@ -6,16 +6,17 @@ import card.Card
 
 /** A class representing a Player.
  *
- * The Player is defined by its name, gems, which must be two initially, hand and deck of cards.
+ * The Player is defined by its name and a deck of cards.
  *
  * @param name The name of the Player.
  * @param deck The cards in the deck of the Player.
  *
- * @constructor Creates a new Player with the specified name and a deck of cards.
+ * @constructor Creates a new Player with the specified name and deck of cards.
  *
  * @example
  * {{{
- * val player = new Player("Andres")
+ * ...
+ * val player = new Player("Andres", deck)
  * var name = player.name
  * println(s"The name of the player is $name")
  * }}}
@@ -40,7 +41,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) {
   }
 
   def loseGems(): Unit = {
-    this.gems -= 1
+    gems -= 1
   }
 
   def drawCard(): Unit = {

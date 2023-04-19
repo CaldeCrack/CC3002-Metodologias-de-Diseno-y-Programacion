@@ -34,11 +34,8 @@ class PlayerTests extends FunSuite {
     assertEquals(player.gems, 0)
   }
 
-  test("A Player initially has an empty hand (of max 10 cards)") {
-    assertEquals(player.hand.length, 10)
-    for (i <- 0 to 9) {
-      assert(player.hand.lift(i).isEmpty)
-    }
+  test("A Player initially has an empty hand") {
+    assert(player.hand.isEmpty)
   }
 
   test("A Player can draw cards") {
