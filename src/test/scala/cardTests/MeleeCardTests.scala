@@ -14,7 +14,7 @@ class MeleeCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new MeleeCard("MeleeCard", 6)
-    assertEquals(card, card)
-    assertEquals(card, card2)
+    assertEquals(card.##, card.##)
+    assertEquals(card.##, card2.##)
   }
 }

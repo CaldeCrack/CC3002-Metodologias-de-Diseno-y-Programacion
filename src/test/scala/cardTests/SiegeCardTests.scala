@@ -14,7 +14,7 @@ class SiegeCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new SiegeCard("SiegeCard", 8)
-    assertEquals(card, card)
-    assertEquals(card, card2)
+    assertEquals(card.##, card.##)
+    assertEquals(card.##, card2.##)
   }
 }

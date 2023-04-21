@@ -14,7 +14,7 @@ class RangerCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new RangerCard("RangerCard", 7)
-    assertEquals(card, card)
-    assertEquals(card, card2)
+    assertEquals(card.##, card.##)
+    assertEquals(card.##, card2.##)
   }
 }

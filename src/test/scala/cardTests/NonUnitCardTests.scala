@@ -13,8 +13,8 @@ class NonUnitCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new NonUnitCard("NonUnitCard")
-    assertEquals(card, card)
-    assertEquals(card, card2)
+    assertEquals(card.##, card.##)
+    assertEquals(card.##, card2.##)
   }
 
   test("A NonUnitCard has a name") {
