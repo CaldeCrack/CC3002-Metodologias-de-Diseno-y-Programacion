@@ -13,13 +13,4 @@ trait Card{
   val name: String
   /** The strength of the Card. */
   var strength: Int
-
-  /** Adds 1 to the strength of the card */
-  def addStrength(): Unit
-  /** Duplicates the strength of the card */
-  def dupStrength(): Unit
-  /** Sets to 1 the strength of the card */
-  def lowStrength(): Unit
-  /** Resets to the original value of strength of the card */
-  def resetStrength(): Unit
 }

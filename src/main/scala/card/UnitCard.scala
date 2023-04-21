@@ -3,7 +3,7 @@ package card
 
 import java.util.Objects
 
-/** A UnitCard that extends AbstractCard and methods from the trait Card.
+/** A UnitCard that extends AbstractCard and the trait Card.
  *
  * @constructor Create a new UnitCard with the given name and strength.
  * @author <a href="https://github.com/CaldeCrack">R8V</a>
@@ -13,10 +13,10 @@ import java.util.Objects
 class UnitCard(name: String, strength: Int) extends AbstractCard(name, strength) with Equals {
   private val baseStrength: Int = strength
 
-  override def addStrength(): Unit = this.strength += 1
-  override def dupStrength(): Unit = this.strength *= 2
-  override def lowStrength(): Unit = this.strength -= strength-1
-  override def resetStrength(): Unit = this.strength -= strength-baseStrength
+  def addStrength(): Unit = this.strength += 1
+  def dupStrength(): Unit = this.strength *= 2
+  def lowStrength(): Unit = this.strength -= strength-1
+  def resetStrength(): Unit = this.strength -= strength-baseStrength
 
   override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
 
