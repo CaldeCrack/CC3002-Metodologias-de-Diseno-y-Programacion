@@ -13,10 +13,10 @@ import java.util.Objects
 class UnitCard(name: String, strength: Int) extends AbstractCard(name, strength) with Equals {
   private val baseStrength: Int = strength
 
-  def addStrength(): Unit = strength = 1
-  def dupStrength(): Unit = strength *= 2
-  def lowStrength(): Unit = strength -= strength-1
-  def resetStrength(): Unit = strength -= strength-baseStrength
+  def addStrength(): Unit = strength = strength+1
+  def dupStrength(): Unit = strength = strength*2
+  def lowStrength(): Unit = strength = 1
+  def resetStrength(): Unit = strength = baseStrength
 
   override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
 
