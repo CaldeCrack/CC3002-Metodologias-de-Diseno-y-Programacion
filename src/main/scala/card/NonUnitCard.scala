@@ -10,8 +10,7 @@ import java.util.Objects
  * @version 1.0
  * @since 1.0
  */
-class NonUnitCard(name: String, strength: Int) extends AbstractCard(name, 0) with Equals {
-
+class NonUnitCard(name: String) extends AbstractCard(name, 0) with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[NonUnitCard]
 
   override def equals(that: Any): Boolean = {
