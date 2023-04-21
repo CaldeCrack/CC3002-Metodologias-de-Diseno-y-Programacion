@@ -41,6 +41,7 @@ class PlayerTests extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     player = new Player(name, deck)
   }
+
   test("equals") {
     val player2 = new Player("Player", deck)
     assertEquals(player.##, player.##)
