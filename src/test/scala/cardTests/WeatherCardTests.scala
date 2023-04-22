@@ -13,6 +13,9 @@ class WeatherCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new WeatherCard("WeatherCard")
+    assert(card.canEqual(card2))
+    assert(card.equals(card2))
+    assert(!card.equals(null))
     assertEquals(card.##, card.##)
     assertEquals(card.##, card2.##)
   }

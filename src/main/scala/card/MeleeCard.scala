@@ -19,7 +19,6 @@ class MeleeCard(name: String, strength: Int) extends UnitCard(name, strength){
       name == other.name && strength == other.strength
     } else false
   }
-
   override def hashCode: Int = {
     Objects.hash(classOf[MeleeCard], name, strength)
   }

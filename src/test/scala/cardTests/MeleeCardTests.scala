@@ -11,9 +11,11 @@ class MeleeCardTests extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     card = new MeleeCard(name, strength)
   }
-
   test("equals") {
     val card2 = new MeleeCard("MeleeCard", 6)
+    assert(card.canEqual(card2))
+    assert(card.equals(card2))
+    assert(!card.equals(null))
     assertEquals(card.##, card.##)
     assertEquals(card.##, card2.##)
   }

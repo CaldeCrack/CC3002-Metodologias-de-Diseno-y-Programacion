@@ -5,7 +5,7 @@ import card.SiegeCard
 import munit.FunSuite
 class SiegeCardTests extends FunSuite {
   val name = "SiegeCard"
-  val strength = 8
+  val strength = 6
 
   var card: SiegeCard = _
   override def beforeEach(context: BeforeEach): Unit = {
@@ -13,7 +13,10 @@ class SiegeCardTests extends FunSuite {
   }
 
   test("equals") {
-    val card2 = new SiegeCard("SiegeCard", 8)
+    val card2 = new SiegeCard("SiegeCard", 6)
+    assert(card.canEqual(card2))
+    assert(card.equals(card2))
+    assert(!card.equals(null))
     assertEquals(card.##, card.##)
     assertEquals(card.##, card2.##)
   }

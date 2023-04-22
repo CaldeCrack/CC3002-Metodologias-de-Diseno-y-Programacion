@@ -14,6 +14,9 @@ class UnitCardTests extends FunSuite {
 
   test("equals") {
     val card2 = new UnitCard("UnitCard", 5)
+    assert(card.canEqual(card2))
+    assert(card.equals(card2))
+    assert(!card.equals(null))
     assertEquals(card.##, card.##)
     assertEquals(card.##, card2.##)
   }
