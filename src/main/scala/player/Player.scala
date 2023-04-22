@@ -18,7 +18,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
   var hand: ListBuffer[Card] = ListBuffer()
   private var maxHand: Boolean = false
   private var emptyDeck: Boolean = false
-  private var curHand: Int = 9
+  private var handAmount: Int = 0
   private var curDeck: Int = 24
 
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
@@ -37,11 +37,11 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
   def drawCard(): Unit = {
     if (!maxHand) {
       hand.addOne(deck.last)
-      curHand += 1
+      handAmount += 1
       deck.remove(curDeck)
       curDeck -= 1
     }
-    if (curHand == 9) {
+    if (handAmount == 10) {
       maxHand = true
     }
   }

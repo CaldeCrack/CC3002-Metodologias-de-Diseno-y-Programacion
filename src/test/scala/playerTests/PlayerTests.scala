@@ -33,17 +33,23 @@ class PlayerTests extends FunSuite {
   val card22 = new WeatherCard("Weather8")
   val card23 = new WeatherCard("Weather10")
   val card24 = new WeatherCard("Weather12")
-  val deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+  val _deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
     card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
     card20, card21, card22, card23, card24)
 
   var player: Player = _
   override def beforeEach(context: BeforeEach): Unit = {
+    val deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
+      card20, card21, card22, card23, card24)
     player = new Player(name, deck)
   }
 
   test("equals") {
-    val player2 = new Player("Player", deck)
+    val player2 = new Player("Player", _deck)
+    assert(player.canEqual(player2))
+    assert(player.equals(player2))
+    assert(!player.equals(null))
     assertEquals(player.##, player.##)
     assertEquals(player.##, player2.##)
   }
@@ -112,7 +118,7 @@ class PlayerTests extends FunSuite {
 
   test("A Player can shuffle its deck") {
     player.shuffleDeck()
-    val commonEle = player.deck.intersect(deck)
-    assertEquals(deck, commonEle)
+    val commonEle = player.deck.intersect(_deck)
+    assertEquals(_deck, commonEle)
   }
 }
