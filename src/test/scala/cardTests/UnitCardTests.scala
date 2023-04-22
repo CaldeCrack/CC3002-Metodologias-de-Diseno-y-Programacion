@@ -25,8 +25,9 @@ class UnitCardTests extends FunSuite {
     assertEquals(card.name, name)
   }
 
-  test("A UnitCard has a strength") {
+  test("A UnitCard has a strength (greater than 0)") {
     assertEquals(card.strength, strength)
+    assert(card.strength>0)
   }
 
   test("A UnitCard can add 1 to its strength") {
