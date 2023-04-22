@@ -10,7 +10,7 @@ import java.util.Objects
  * @version 1.0
  * @since 1.0
  */
-class MeleeCard(name: String, strength: Int) extends UnitCard(name, strength) with Equals {
+class MeleeCard(name: String, strength: Int) extends UnitCard(name, strength){
   override def canEqual(that: Any): Boolean = that.isInstanceOf[MeleeCard]
 
   override def equals(that: Any): Boolean = {

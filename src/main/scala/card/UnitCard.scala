@@ -3,18 +3,17 @@ package card
 
 import java.util.Objects
 
-/** A UnitCard that extends AbstractCard and the trait Card.
+/** A UnitCard that extends AbstractCard and the traits Card and StrengthCapable.
  *
  * @constructor Create a new UnitCard with the given name and strength.
  * @author <a href="https://github.com/CaldeCrack">R8V</a>
  * @version 1.0
  * @since 1.0
  */
-class UnitCard(name: String, strength: Int) extends AbstractCard(name, strength) with Equals {
+class UnitCard(name: String, _strength: Int) extends AbstractCard(name, _strength) with Equals with StrengthCapable {
   private val baseStrength: Int = strength
-
-  def addStrength(): Unit = strength = strength+1
-  def dupStrength(): Unit = strength = strength*2
+  def addStrength(): Unit = strength += 1
+  def dupStrength(): Unit = strength *= 2
   def lowStrength(): Unit = strength = 1
   def resetStrength(): Unit = strength = baseStrength
 

@@ -8,4 +8,7 @@ package card
  * @version 1.0
  * @since 1.0
  */
-abstract class AbstractCard(override val name: String, override var strength: Int) extends Card
+abstract class AbstractCard(val name: String, var _strength: Int) extends Card{
+  def strength: Int = _strength
+  def strength_=(newStrength: Int): Unit = _strength = newStrength
+}

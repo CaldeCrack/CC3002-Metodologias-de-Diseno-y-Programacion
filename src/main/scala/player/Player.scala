@@ -47,6 +47,6 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
   }
 
   def shuffleDeck(): Unit = {
-    util.Random.shuffle(deck)
+    Random.shuffle(deck)
   }
 }
