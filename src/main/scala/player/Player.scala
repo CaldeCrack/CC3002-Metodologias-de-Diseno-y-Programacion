@@ -68,7 +68,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    * }}}
    */
   override def equals(that: Any): Boolean = {
-    // If that can equal this object then make the comparisons, otherwise return false
+    // If [that] can equal this object then make the comparisons, otherwise return false
     if (canEqual(that)) {
       val other = that.asInstanceOf[Player]
       // Returns if its equal or not
@@ -84,9 +84,10 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    * @return An integer.
    * @example
    * {{{
+   * val deck= ListBuffer(...)
    * val player = new Player("Andres", deck)
    * val hashCodePlayer = player.##
-   * println(s"The hash code of player is $hashCodePlayer")
+   * println(s"The hash code of the player is $hashCodePlayer")
    * }}}
    */
   override def hashCode: Int = {Objects.hash(classOf[Player], name, deck)}
@@ -97,6 +98,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    *
    * @example
    * {{{
+   * val deck= ListBuffer(...)
    * val player = new Player("Andres", deck)
    * player.loseGems()
    * var gems = player.gems
@@ -105,10 +107,11 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    */
   def loseGems(): Unit = gems -= 1
 
-  /** Player draws a card from its deck to his hand.
+  /** player draws a card from its deck to his hand.
    *
    * @example
    * {{{
+   * val deck= ListBuffer(...)
    * val player = new Player("Andres", deck)
    * player.drawCard()
    * var handAmount = player.hand.length
@@ -125,7 +128,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
       deck.remove(curDeck)
       curDeck -= 1
     }
-    // If hand is full change state of maxHand to true
+    // If hand is full change state of [maxHand] to true
     if (handAmount == 10) maxHand = true
   }
 
@@ -133,6 +136,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    *
    * @example
    * {{{
+   * val deck= ListBuffer(...)
    * val player = new Player("Andres", deck)
    * player.shuffleDeck()
    * }}}
