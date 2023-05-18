@@ -26,18 +26,6 @@ abstract class AbstractUnitCard(val name: String, var _strength: Int) extends Ca
    */
   def strength: Int = _strength
 
-  /** Setter for the parameter _strength.
-   *
-   * @example
-   * {{{
-   * val card = new UnitCard("Card", 5)
-   * card.strength = 6
-   * val strength = card.strength
-   * println(s"card's strength is $strength")
-   * }}}
-   */
-  def strength_=(newStrength: Int): Unit = _strength = newStrength
-
   /** Variable that stores the original strength value of the card in case it's modified */
   private val baseStrength: Int = _strength
 

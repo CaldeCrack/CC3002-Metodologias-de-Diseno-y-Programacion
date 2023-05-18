@@ -23,7 +23,7 @@ import java.util.Objects
  * @since 1.0
  * @version 1.0
  */
-class RangerUnitCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
+class RangerCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.
@@ -36,16 +36,16 @@ class RangerUnitCard(name: String, strength: Int) extends AbstractUnitCard(name,
    * println(s"card can equal card2 is $_canEqual")
    * }}}
    */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[RangerUnitCard]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[RangerCard]
 
   override def equals(that: Any): Boolean = {
     // If [that] can equal this object then make the comparisons, otherwise return false
     if (canEqual(that)) {
-      val other = that.asInstanceOf[RangerUnitCard]
+      val other = that.asInstanceOf[RangerCard]
       // Returns if its equal or not
       name == other.name && strength == other.strength
     } else false
   }
 
-  override def hashCode: Int = Objects.hash(classOf[RangerUnitCard], name, strength)
+  override def hashCode: Int = Objects.hash(classOf[RangerCard], name, strength)
 }
