@@ -37,18 +37,6 @@ class WeatherCard(name: String) extends NonUnitCard(name) {
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WeatherCard]
 
-  /** Returns if the parameter equals this object.
-   *
-   * @param that object that is trying to compare to this object.
-   * @return If is equal to this object.
-   * @example
-   * {{{
-   * val card = new WeatherCard("Card")
-   * val card2 = new WeatherCard("Card2")
-   * val _equals = card.equals(card2)
-   * println(s"card equals card2 is $_equals")
-   * }}}
-   */
   override def equals(that: Any): Boolean = {
     // If [that] can equal this object then make the comparisons, otherwise return false
     if (canEqual(that)) {
@@ -58,20 +46,5 @@ class WeatherCard(name: String) extends NonUnitCard(name) {
     } else false
   }
 
-  /** Generates a hash code for this object.
-   *
-   * A hash code is a unique number that represents an object, its particularity is that this value will
-   * always be the same if the object has the same parameters, so it can be used to compare objects.
-   *
-   * @return An integer.
-   * @example
-   * {{{
-   * val card = new WeatherCard("card")
-   * val hashCodeCard = card.##
-   * println(s"The hash code of the card is $hashCodeCard")
-   * }}}
-   */
-  override def hashCode: Int = {
-    Objects.hash(classOf[WeatherCard], name, strength)
-  }
+  override def hashCode: Int = Objects.hash(classOf[WeatherCard], name, strength)
 }

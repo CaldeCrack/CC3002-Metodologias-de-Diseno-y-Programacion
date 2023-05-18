@@ -54,19 +54,6 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
 
-  /** Returns if the parameter equals this object.
-   *
-   * @param that object that is trying to compare to this object.
-   * @return If is equal to this object.
-   * @example
-   * {{{
-   * val deck= ListBuffer(...)
-   * val player = new Player("Andres", deck)
-   * val player2 = new Player("Calderon", deck)
-   * val _equals = player.equals(player2)
-   * println(s"player equals player2 is $_equals")
-   * }}}
-   */
   override def equals(that: Any): Boolean = {
     // If [that] can equal this object then make the comparisons, otherwise return false
     if (canEqual(that)) {
@@ -76,21 +63,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
     } else false
   }
 
-  /** Generates a hash code for this object.
-   *
-   * A hash code is a unique number that represents an object, its particularity is that this value will
-   * always be the same if the object has the same parameters, so it can be used to compare objects.
-   *
-   * @return An integer.
-   * @example
-   * {{{
-   * val deck= ListBuffer(...)
-   * val player = new Player("Andres", deck)
-   * val hashCodePlayer = player.##
-   * println(s"The hash code of the player is $hashCodePlayer")
-   * }}}
-   */
-  override def hashCode: Int = {Objects.hash(classOf[Player], name, deck)}
+  override def hashCode: Int = Objects.hash(classOf[Player], name, deck)
 
   /** Reduces the amount of gems the player has.
    *
@@ -105,7 +78,7 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    * println(s"player remaining lives: $gems")
    * }}}
    */
-  def loseGems(): Unit = gems -= 1
+  def loseGems(): Unit = if(gems>0) gems -= 1
 
   /** player draws a card from its deck to his hand.
    *
@@ -141,5 +114,5 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    * player.shuffleDeck()
    * }}}
    */
-  def shuffleDeck(): Unit = Random.shuffle(deck)
+  def shuffleDeck(): Unit = deck = Random.shuffle(deck)
 }

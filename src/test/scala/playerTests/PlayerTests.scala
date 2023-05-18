@@ -69,6 +69,14 @@ class PlayerTests extends FunSuite {
     assertEquals(player.gems, 0)
   }
 
+  test("A Player can't have negative gems"){
+    assertEquals(player.gems, 2)
+    player.loseGems()
+    player.loseGems()
+    player.loseGems()
+    assertEquals(player.gems, 0)
+  }
+
   test("A Player initially has a deck of 25 cards") {
     assertEquals(player.deck.length, 25)
   }
@@ -119,6 +127,6 @@ class PlayerTests extends FunSuite {
   test("A Player can shuffle its deck") {
     player.shuffleDeck()
     val commonEle = player.deck.intersect(_deck)
-    assertEquals(_deck, commonEle)
+    assert(_deck!=commonEle)
   }
 }
