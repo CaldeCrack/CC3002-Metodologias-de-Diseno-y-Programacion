@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package card
+package card.unitCards
+
+import card.{Card, StrengthCapable}
 
 /** An abstract class representing a Card with a name and strength that extends the trait Card.
  *
@@ -7,12 +9,11 @@ package card
  *
  * @param name The name of the card.
  * @param _strength The strength of the card.
- *
  * @author <a href="https://github.com/CaldeCrack">R8V</a>
  * @since 1.0
  * @version 1.0
  */
-abstract class AbstractCard(val name: String, var _strength: Int) extends Card{
+abstract class AbstractUnitCard(val name: String, var _strength: Int) extends Card with StrengthCapable{
   /** Getter for the parameter _strength.
    *
    * @return The strength of the card.
@@ -36,4 +37,19 @@ abstract class AbstractCard(val name: String, var _strength: Int) extends Card{
    * }}}
    */
   def strength_=(newStrength: Int): Unit = _strength = newStrength
+
+  /** Variable that stores the original strength value of the card in case it's modified */
+  private val baseStrength: Int = _strength
+
+  /** Add 1 to the actual strength of the card */
+  override def addStrength(): Unit = _strength += 1
+
+  /** Duplicates the actual strength of the card */
+  override def dupStrength(): Unit = _strength *= 2
+
+  /** Sets the strength of the card to 1 */
+  override def lowStrength(): Unit = _strength = 1
+
+  /** Resets the strength of the card to its original value */
+  override def resetStrength(): Unit = _strength = baseStrength
 }

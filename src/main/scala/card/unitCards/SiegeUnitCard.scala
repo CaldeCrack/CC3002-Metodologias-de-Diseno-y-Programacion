@@ -1,20 +1,21 @@
 package cl.uchile.dcc
-package card
+package card.unitCards
 
 import java.util.Objects
 
-/** A WeatherCard that extends NonUnitCard.
+/** A SiegeCard that extends AbstractUnitCard.
  *
- * A WeatherCard is defined by its name.
+ * A SiegeCard is defined by its name and strength.
  *
  * @param name The name of the card.
+ * @param strength The strength of the card.
  *
- * @constructor Create a new WeatherCard with the given name.
+ * @constructor Create a new SiegeCard with the given name and strength.
  *
  * @example
  * {{{
- * val weatherCard = new weatherCard("card", 5)
- * val name = weatherCard.name
+ * val siegeCard = new SiegeCard("card", 5)
+ * val name = siegeCard.name
  * println(s"The name of the card is $name")
  * }}}
  *
@@ -22,29 +23,29 @@ import java.util.Objects
  * @since 1.0
  * @version 1.0
  */
-class WeatherCard(name: String) extends NonUnitCard(name) {
+class SiegeUnitCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.
    * @return If can equal this object.
    * @example
    * {{{
-   * val card = new WeatherCard("Card")
-   * val card2 = new WeatherCard("Card2")
+   * val card = new SiegeCard("Card", 5)
+   * val card2 = new SiegeCard("Card2", 5)
    * val _canEqual = card.canEqual(card2)
    * println(s"card can equal card2 is $_canEqual")
    * }}}
    */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[WeatherCard]
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[SiegeUnitCard]
 
   override def equals(that: Any): Boolean = {
     // If [that] can equal this object then make the comparisons, otherwise return false
     if (canEqual(that)) {
-      val other = that.asInstanceOf[WeatherCard]
+      val other = that.asInstanceOf[SiegeUnitCard]
       // Returns if its equal or not
       name == other.name && strength == other.strength
     } else false
   }
 
-  override def hashCode: Int = Objects.hash(classOf[WeatherCard], name, strength)
+  override def hashCode: Int = Objects.hash(classOf[SiegeUnitCard], name, strength)
 }

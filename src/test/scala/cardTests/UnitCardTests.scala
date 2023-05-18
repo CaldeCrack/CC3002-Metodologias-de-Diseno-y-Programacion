@@ -1,19 +1,18 @@
 package cl.uchile.dcc
 package cardTests
 
-import card.UnitCard
 import munit.FunSuite
 class UnitCardTests extends FunSuite {
   val name = "UnitCard"
   val strength = 5
 
-  var card: UnitCard = _
+  var card: UnitUnitCard = _
   override def beforeEach(context: BeforeEach): Unit = {
-    card = new UnitCard(name, strength)
+    card = new UnitUnitCard(name, strength)
   }
 
   test("equals") {
-    val card2 = new UnitCard("UnitCard", 5)
+    val card2 = new UnitUnitCard("UnitCard", 5)
     assert(card.canEqual(card2))
     assert(card.equals(card2))
     assert(!card.equals(null))

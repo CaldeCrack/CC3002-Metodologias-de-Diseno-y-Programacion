@@ -1,18 +1,18 @@
 package cl.uchile.dcc
 package cardTests
 
-import card.MeleeCard
+import cl.uchile.dcc.card.unitCards.MeleeUnitCard
 import munit.FunSuite
 class MeleeCardTests extends FunSuite {
   val name = "MeleeCard"
   val strength = 6
 
-  var card: MeleeCard = _
+  var card: MeleeUnitCard = _
   override def beforeEach(context: BeforeEach): Unit = {
-    card = new MeleeCard(name, strength)
+    card = new MeleeUnitCard(name, strength)
   }
   test("equals") {
-    val card2 = new MeleeCard("MeleeCard", 6)
+    val card2 = new MeleeUnitCard("MeleeCard", 6)
     assert(card.canEqual(card2))
     assert(card.equals(card2))
     assert(!card.equals(null))

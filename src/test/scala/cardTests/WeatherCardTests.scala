@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package cardTests
 
-import card.WeatherCard
+import cl.uchile.dcc.card.nonUnitCards.WeatherCard
 import munit.FunSuite
 class WeatherCardTests extends FunSuite {
   val name = "WeatherCard"

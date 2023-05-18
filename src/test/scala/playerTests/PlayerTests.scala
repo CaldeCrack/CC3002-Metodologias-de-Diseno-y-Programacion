@@ -2,30 +2,32 @@ package cl.uchile.dcc
 package playerTests
 
 import scala.collection.mutable.ListBuffer
-import card.{Card, MeleeCard, RangerCard, SiegeCard, WeatherCard}
+import card.Card
 import player.Player
+import cl.uchile.dcc.card.nonUnitCards.WeatherCard
+import cl.uchile.dcc.card.unitCards.{MeleeUnitCard, RangerUnitCard, SiegeUnitCard}
 
 import munit.FunSuite
 class PlayerTests extends FunSuite {
   val name = "Player"
-  val card0 = new MeleeCard("Melee0", 2)
-  val card1 = new MeleeCard("Melee1", 3)
-  val card2 = new MeleeCard("Melee2", 4)
-  val card3 = new MeleeCard("Melee3", 5)
-  val card4 = new MeleeCard("Melee4", 6)
-  val card5 = new MeleeCard("Melee5", 7)
-  val card6 = new RangerCard("Ranger0", 2)
-  val card7 = new RangerCard("Ranger1", 3)
-  val card8 = new RangerCard("Ranger2", 4)
-  val card9 = new RangerCard("Ranger3", 5)
-  val card10 = new RangerCard("Ranger4", 6)
-  val card11 = new RangerCard("Ranger5", 7)
-  val card12 = new SiegeCard("Siege0", 2)
-  val card13 = new SiegeCard("Siege1", 3)
-  val card14 = new SiegeCard("Siege2", 4)
-  val card15 = new SiegeCard("Siege3", 5)
-  val card16 = new SiegeCard("Siege4", 6)
-  val card17 = new SiegeCard("Siege5", 7)
+  val card0 = new MeleeUnitCard("Melee0", 2)
+  val card1 = new MeleeUnitCard("Melee1", 3)
+  val card2 = new MeleeUnitCard("Melee2", 4)
+  val card3 = new MeleeUnitCard("Melee3", 5)
+  val card4 = new MeleeUnitCard("Melee4", 6)
+  val card5 = new MeleeUnitCard("Melee5", 7)
+  val card6 = new RangerUnitCard("Ranger0", 2)
+  val card7 = new RangerUnitCard("Ranger1", 3)
+  val card8 = new RangerUnitCard("Ranger2", 4)
+  val card9 = new RangerUnitCard("Ranger3", 5)
+  val card10 = new RangerUnitCard("Ranger4", 6)
+  val card11 = new RangerUnitCard("Ranger5", 7)
+  val card12 = new SiegeUnitCard("Siege0", 2)
+  val card13 = new SiegeUnitCard("Siege1", 3)
+  val card14 = new SiegeUnitCard("Siege2", 4)
+  val card15 = new SiegeUnitCard("Siege3", 5)
+  val card16 = new SiegeUnitCard("Siege4", 6)
+  val card17 = new SiegeUnitCard("Siege5", 7)
   val card18 = new WeatherCard("Weather0")
   val card19 = new WeatherCard("Weather2")
   val card20 = new WeatherCard("Weather4")

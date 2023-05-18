@@ -1,7 +1,6 @@
 package cl.uchile.dcc
 package cardTests
 
-import card.NonUnitCard
 import munit.FunSuite
 class NonUnitCardTests extends FunSuite {
   val name = "NonUnitCard"
