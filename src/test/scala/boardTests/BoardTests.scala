@@ -2,8 +2,7 @@ package cl.uchile.dcc
 package boardTests
 
 import board.Board
-
-import card.unitCards.{MeleeCard, SiegeCard}
+import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
 import card.nonUnitCards.WeatherCard
 import munit.FunSuite
 class BoardTests extends FunSuite {
@@ -24,6 +23,7 @@ class BoardTests extends FunSuite {
     val card = new MeleeCard("melee", 5)
     val card2 = new SiegeCard("siege", 5)
     val card3 = new WeatherCard("weather")
+    val card4 = new RangerCard("ranger", 5)
     board.addCard(card)
     board.addCard(card2)
     board.addCard(card2)
@@ -32,6 +32,8 @@ class BoardTests extends FunSuite {
     assertEquals(board.rangerArea.list.length, 0)
     assertEquals(board.siegeArea.list.length, 2)
     assertEquals(board.weatherArea.list.length, 1)
+    board.addCard(card4)
+    assertEquals(board.rangerArea.list.length, 1)
   }
 
   test("Weather area can only have 1 card"){
