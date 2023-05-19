@@ -3,7 +3,9 @@ package card.nonUnitCards
 
 import card.Card
 import board.Board
+
 import java.util.Objects
+import scala.collection.mutable.ListBuffer
 
 /** A WeatherCard that extends AbstractNonUnitCard.
  *
@@ -35,7 +37,13 @@ class WeatherCard(val name: String) extends Card with Equals{
    * card.addCard(board)
    * }}}
    */
-  override def addCard(board: Board): Unit = board.weatherArea.list.addOne(this)
+  override def addCard(board: Board): Unit = {
+    if(board.weatherArea.list.isEmpty) board.weatherArea.list.addOne(this)
+    else {
+      board.weatherArea.list.clear()
+      board.weatherArea.list.addOne(this)
+    }
+  }
 
   /** Returns if the parameter can equal this object.
    *

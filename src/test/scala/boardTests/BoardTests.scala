@@ -3,7 +3,7 @@ package boardTests
 
 import board.Board
 
-import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
+import card.unitCards.{MeleeCard, SiegeCard}
 import card.nonUnitCards.WeatherCard
 import munit.FunSuite
 class BoardTests extends FunSuite {
@@ -26,11 +26,29 @@ class BoardTests extends FunSuite {
     val card3 = new WeatherCard("weather")
     board.addCard(card)
     board.addCard(card2)
-    board.addCard(card3)
+    board.addCard(card2)
     board.addCard(card3)
     assertEquals(board.meleeArea.list.length, 1)
     assertEquals(board.rangerArea.list.length, 0)
-    assertEquals(board.siegeArea.list.length, 1)
-    assertEquals(board.weatherArea.list.length, 2)
+    assertEquals(board.siegeArea.list.length, 2)
+    assertEquals(board.weatherArea.list.length, 1)
+  }
+
+  test("Weather area can only have 1 card"){
+    val card = new WeatherCard("weather")
+    assertEquals(board.weatherArea.list.length, 0)
+    board.addCard(card)
+    assertEquals(board.weatherArea.list.length, 1)
+    board.addCard(card)
+    assertEquals(board.weatherArea.list.length, 1)
+  }
+
+  test("Weather area change its only card"){
+    val card = new WeatherCard("weather")
+    val card2 = new WeatherCard("weather2")
+    board.addCard(card)
+    assertEquals(board.weatherArea.list.head, card)
+    board.addCard(card2)
+    assertEquals(board.weatherArea.list.head, card2)
   }
 }
