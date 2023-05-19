@@ -46,5 +46,5 @@ class RangerArea(var list: ListBuffer[RangerCard] = ListBuffer()) extends Equals
     } else false
   }
 
-  override def hashCode: Int = Objects.hash(classOf[MeleeArea], list)
+  override def hashCode: Int = Objects.hash(classOf[RangerArea], list)
 }

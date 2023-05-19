@@ -46,5 +46,5 @@ class WeatherArea(var list: ListBuffer[WeatherCard] = ListBuffer()) extends Equa
     } else false
   }
 
-  override def hashCode: Int = Objects.hash(classOf[MeleeArea], list)
+  override def hashCode: Int = Objects.hash(classOf[WeatherArea], list)
 }
