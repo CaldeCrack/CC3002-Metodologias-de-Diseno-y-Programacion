@@ -1,10 +1,11 @@
 package cl.uchile.dcc
 package player
 
+import card.Card
+import board.Board
+import java.util.Objects
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
-import java.util.Objects
-import card.Card
 
 /** A class representing a player.
  *
@@ -27,7 +28,7 @@ import card.Card
  * @since 1.0
  * @version 1.0
  */
-class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
+class Player(val name: String, var deck: ListBuffer[Card], var board: Board) extends Equals {
   /** The "lives" of the player */
   var gems: Int = 2
   /** The hand of the player (initially empty) */
@@ -115,4 +116,23 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    * }}}
    */
   def shuffleDeck(): Unit = deck = Random.shuffle(deck)
+
+  /** Plays a card onto the board.
+   *
+   * @example
+   * {{{
+   * val deck= ListBuffer(...)
+   * val player = new Player("Andres", deck)
+   * player.playCard()
+   * }}}
+   */
+  def playCard(card: Card): Unit = {
+    // Plays a card of the hand
+    board.addCard(card)
+    handAmount -= 1
+    // Removes this card from the deck
+    hand.remove(hand.indexOf(card))
+    // After this maxHand will always be false
+    maxHand = false
+  }
 }

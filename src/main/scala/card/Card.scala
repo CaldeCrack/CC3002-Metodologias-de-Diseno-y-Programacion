@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package card
 
+import board.Board
+
 /** A trait representing a Card.
  *
  * @constructor Create a new Card with the given name.
@@ -11,6 +13,8 @@ package card
 trait Card{
   /** The name of the Card. */
   val name: String
+  /** Add the card to the board. */
+  def addCard(board: Board): Unit
 }
 
 /** A trait representing if a Card is capable of using its strength.

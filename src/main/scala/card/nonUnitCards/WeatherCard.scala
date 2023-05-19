@@ -2,6 +2,7 @@ package cl.uchile.dcc
 package card.nonUnitCards
 
 import card.Card
+import board.Board
 import java.util.Objects
 
 /** A WeatherCard that extends AbstractNonUnitCard.
@@ -24,6 +25,9 @@ import java.util.Objects
  * @version 1.0
  */
 class WeatherCard(val name: String) extends Card with Equals{
+
+  override def addCard(board: Board): Unit = board.weatherArea.list.addOne(this)
+
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

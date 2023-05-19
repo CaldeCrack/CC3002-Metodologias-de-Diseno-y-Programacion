@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package card.unitCards
 
+import board.Board
 import java.util.Objects
 
 /** A MeleeCard that extends AbstractUnitCard.
@@ -24,6 +25,8 @@ import java.util.Objects
  * @version 1.0
  */
 class MeleeCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
+
+  override def addCard(board: Board): Unit = board.meleeArea.list.addOne(this)
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.
