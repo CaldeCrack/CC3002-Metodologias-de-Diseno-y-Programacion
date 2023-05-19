@@ -28,7 +28,7 @@ import scala.util.Random
  * @since 1.0
  * @version 1.0
  */
-class Player(val name: String, var deck: ListBuffer[Card], var board: Board) extends Equals {
+class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
   /** The "lives" of the player */
   var gems: Int = 2
   /** The hand of the player (initially empty) */
@@ -126,7 +126,7 @@ class Player(val name: String, var deck: ListBuffer[Card], var board: Board) ext
    * player.playCard()
    * }}}
    */
-  def playCard(card: Card): Unit = {
+  def playCard(board: Board, card: Card): Unit = {
     // Plays a card of the hand
     board.addCard(card)
     handAmount -= 1

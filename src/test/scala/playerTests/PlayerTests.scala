@@ -131,4 +131,6 @@ class PlayerTests extends FunSuite {
     player.shuffleDeck()
     assert(_deck!=player.deck)
   }
+
+  // add board tests
 }
