@@ -5,7 +5,7 @@ import board.Board
 
 /** A trait representing a Card.
  *
- * @constructor Create a new Card with the given name.
+ * @constructor Creates a new Card with the given name.
  * @author <a href="https://github.com/CaldeCrack">R8V</a>
  * @version 1.0
  * @since 1.0

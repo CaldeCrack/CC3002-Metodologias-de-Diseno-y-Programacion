@@ -11,7 +11,7 @@ import java.util.Objects
  *
  * @param name The name of the card.
  *
- * @constructor Create a new WeatherCard with the given name.
+ * @constructor Creates a new WeatherCard with the given name.
  *
  * @example
  * {{{
@@ -26,6 +26,15 @@ import java.util.Objects
  */
 class WeatherCard(val name: String) extends Card with Equals{
 
+  /** Adds this card to its corresponding area in the board.
+   *
+   * @example
+   * {{{
+   * val card = new WeatherCard("weatherCard")
+   * val board = new Board()
+   * card.addCard(board)
+   * }}}
+   */
   override def addCard(board: Board): Unit = board.weatherArea.list.addOne(this)
 
   /** Returns if the parameter can equal this object.

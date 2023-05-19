@@ -11,7 +11,7 @@ import java.util.Objects
  * @param name The name of the card.
  * @param strength The strength of the card.
  *
- * @constructor Create a new RangerCard with the given name and strength.
+ * @constructor Creates a new RangerCard with the given name and strength.
  *
  * @example
  * {{{
@@ -26,6 +26,15 @@ import java.util.Objects
  */
 class RangerCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
 
+  /** Adds this card to its corresponding area in the board.
+   *
+   * @example
+   * {{{
+   * val card = new RangerCard("rangerCard", 5)
+   * val board = new Board()
+   * card.addCard(board)
+   * }}}
+   */
   override def addCard(board: Board): Unit = board.rangerArea.list.addOne(this)
   /** Returns if the parameter can equal this object.
    *
