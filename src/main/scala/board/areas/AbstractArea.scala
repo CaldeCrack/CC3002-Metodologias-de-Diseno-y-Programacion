@@ -13,6 +13,4 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-abstract class AbstractArea(var list: ListBuffer[Card]) extends Area{
-
-}
+abstract class AbstractArea(var list: ListBuffer[Card]) extends Area

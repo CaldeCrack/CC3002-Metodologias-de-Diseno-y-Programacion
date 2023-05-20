@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package board.areas
 
-import card.unitCards.MeleeCard
+import card.Card
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
 
@@ -22,7 +22,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-class MeleeArea(var list: ListBuffer[MeleeCard] = ListBuffer()) extends Equals {
+class MeleeArea(list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(list) with Equals {
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.
