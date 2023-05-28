@@ -7,7 +7,6 @@ import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
 import player.Player
 import board.Board
 import munit.FunSuite
-
 import scala.collection.mutable.ListBuffer
 class PlayerTests extends FunSuite {
   val name = "Player"
@@ -132,12 +131,19 @@ class PlayerTests extends FunSuite {
     assert(_deck!=player.deck)
   }
 
-  test("A Player can play a card from its hand"){
-    val board = new Board()
+  test("A Player can play a (weather or unit) card from its hand"){
+    val deck2: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
+      card20, card21, card22, card23, card17)
+    val player2 = new Player(name, deck2)
+    val board = new Board(player, player2)
     player.drawCard()
     assertEquals(player.hand.length, 1)
     player.playCard(board, player.hand.head)
     assertEquals(board.weatherArea.list.length, 1)
     assertEquals(player.hand.length, 0)
+    player2.drawCard()
+    player2.playCard(board, player2.hand.head)
+    assertEquals(player2.playerBoard.siegeArea.list.length, 1)
   }
 }

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package card.unitCards
 
-import board.Board
+import board.{Board, PlayerBoard}
 import java.util.Objects
 
 /** A RangerCard that extends AbstractUnitCard.
@@ -30,12 +30,16 @@ class RangerCard(name: String, strength: Int) extends AbstractUnitCard(name, str
    *
    * @example
    * {{{
-   * val card = new RangerCard("rangerCard", 5)
-   * val board = new Board()
-   * card.addCard(board)
+   * val card1 = new RangerCard("RangerCard")
+   * val deck1 = ListBuffer(card1, ...)
+   * val deck2 = ListBuffer(card1, ...)
+   * val player1 = new Player("Andres", deck1)
+   * val player2 = new Player("Bot", deck2)
+   * val board = new Board(player1, player2)
+   * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board): Unit = board.rangerArea.list.addOne(this)
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.rangerArea.list.addOne(this)
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

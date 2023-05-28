@@ -1,4 +1,5 @@
 # Gwen't
+## Tarea 1
 
 First I designed generic tests for *Player* and *Cards* defining common and edge cases for every variable and method I
 was planning on create to replicate the requested card game, for this purpose I used the testing framework **MUnit** in
@@ -33,6 +34,10 @@ The rest of classes are subclasses of **UnitCard** and **NonUnitCard**, for the 
 **MeleeCard**, **RangerCard** and **SiegeCard**; and the second one only has **WeatherCard** as a subclass, this with
 the purpose of in the future making a difference between cards with different classifications when I implement the
 table of the game.
+
+## Tarea 2
+
+
 
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 

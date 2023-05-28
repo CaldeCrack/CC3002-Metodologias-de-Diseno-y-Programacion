@@ -2,10 +2,8 @@ package cl.uchile.dcc
 package card.nonUnitCards
 
 import card.Card
-import board.Board
-
+import board.{Board, PlayerBoard}
 import java.util.Objects
-import scala.collection.mutable.ListBuffer
 
 /** A WeatherCard that extends AbstractNonUnitCard.
  *
@@ -32,13 +30,19 @@ class WeatherCard(val name: String) extends Card with Equals{
    *
    * @example
    * {{{
-   * val card = new WeatherCard("weatherCard")
-   * val board = new Board()
-   * card.addCard(board)
+   * val card1 = new WeatherCard("WeatherCard")
+   * val deck1 = ListBuffer(card1, ...)
+   * val deck2 = ListBuffer(card1, ...)
+   * val player1 = new Player("Andres", deck1)
+   * val player2 = new Player("Bot", deck2)
+   * val board = new Board(player1, player2)
+   * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board): Unit = {
-    if(board.weatherArea.list.isEmpty) board.weatherArea.list.addOne(this)
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = {
+    if(board.weatherArea.list.isEmpty){
+      board.weatherArea.list.addOne(this)
+    }
     else {
       board.weatherArea.list.clear()
       board.weatherArea.list.addOne(this)

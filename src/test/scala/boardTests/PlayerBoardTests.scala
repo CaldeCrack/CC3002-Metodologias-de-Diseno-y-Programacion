@@ -2,16 +2,15 @@ package cl.uchile.dcc
 package boardTests
 
 import board.Board
-import player.Player
-
-import card.Card
 import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
 import card.nonUnitCards.WeatherCard
+import card.Card
+import player.Player
 import munit.FunSuite
-import scala.collection.mutable.ListBuffer
 
-class BoardTests extends FunSuite {
-  var board: Board = _
+import scala.collection.mutable.ListBuffer
+class PlayerBoardTests extends FunSuite {
+  val name = "Player"
   val card0 = new MeleeCard("Melee0", 2)
   val card1 = new MeleeCard("Melee1", 3)
   val card2 = new MeleeCard("Melee2", 4)
@@ -40,24 +39,50 @@ class BoardTests extends FunSuite {
   val _deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
     card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
     card20, card21, card22, card23, card24)
+
   var player1: Player = _
   var player2: Player = _
-
-  override def beforeEach(context: BeforeEach): Unit = {
-    val deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+  var board: Board = _
+  override def beforeEach(context: BeforeEach): Unit ={
+    val deck1: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
       card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
       card20, card21, card22, card23, card24)
-    player1 = new Player("Andres", deck)
-    player2 = new Player("Bot", deck)
-    board = new Board(player1 = player1, player2 = player2)
+    val deck2: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
+      card20, card21, card22, card23, card24)
+    player1 = new Player(name, deck1)
+    player2 = new Player(name, deck2)
+    board = new Board(player1, player2)
   }
 
   test("equals") {
-    val board2 = new Board(player1 = player1, player2 = player2)
+    val board2 = new Board(player1, player2)
     assert(board.canEqual(board2))
     assert(board.equals(board2))
     assert(!board.equals(null))
     assertEquals(board.##, board.##)
     assertEquals(board.##, board2.##)
+  }
+
+  test("Weather area can only have 1 card"){
+    player1.drawCard()
+    assertEquals(board.weatherArea.list.length, 0)
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.length, 1)
+    player1.drawCard()
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.length, 1)
+  }
+
+  test("Weather area changes its only card"){
+    player1.drawCard()
+    val card1 = player1.hand.head
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.head, card1)
+    player1.drawCard()
+    val card2 = player1.hand.head
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.head, card2)
+    assert(card1!=card2)
   }
 }

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package card
 
-import board.Board
+import board.{Board, PlayerBoard}
 
 /** A trait representing a Card.
  *
@@ -14,7 +14,7 @@ trait Card{
   /** The name of the Card. */
   val name: String
   /** Add the card to the board. */
-  def addCard(board: Board): Unit
+  def addCard(board: Board, playerBoard: PlayerBoard): Unit
 }
 
 /** A trait representing if a Card is capable of using its strength.

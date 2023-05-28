@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package player
 
 import card.Card
-import board.Board
+import board.{Board, PlayerBoard}
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
@@ -28,11 +28,11 @@ import scala.util.Random
  * @since 1.0
  * @version 1.0
  */
-class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
+class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: PlayerBoard = new PlayerBoard()) extends Equals {
   /** The "lives" of the player */
   var gems: Int = 2
   /** The hand of the player (initially empty) */
-  var hand: ListBuffer[Card] = ListBuffer()
+  val hand: ListBuffer[Card] = ListBuffer()
   /** Boolean that states if the player has its hand full of cards (max 10) */
   private var maxHand: Boolean = false
   /** Current amount of cards in the hand */
@@ -121,16 +121,19 @@ class Player(val name: String, var deck: ListBuffer[Card]) extends Equals {
    *
    * @example
    * {{{
-   * val deck= ListBuffer(...)
-   * val player = new Player("Andres", deck)
-   * player.playCard()
+   * val deck1 = ListBuffer(...)
+   * val deck2 = ListBuffer(...)
+   * val player1 = new Player("Andres", deck1)
+   * val player2 = new Player("Bot", deck2)
+   * val board = new Board(player1, player2)
+   * player1.playCard(board, player1.hand.head)
    * }}}
    */
   def playCard(board: Board, card: Card): Unit = {
     // Plays a card of the hand
-    board.addCard(card)
-    handAmount -= 1
+    card.addCard(board, this.playerBoard)
     // Removes this card from the deck
+    handAmount -= 1
     hand.remove(hand.indexOf(card))
     // After this maxHand will always be false
     maxHand = false
