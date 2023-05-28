@@ -146,4 +146,19 @@ class PlayerTests extends FunSuite {
     player2.playCard(board, player2.hand.head)
     assertEquals(player2.playerBoard.siegeArea.list.length, 1)
   }
+
+  test("A Player can play any card in its hand (not only the one at the top of the hand)"){
+    val deck2: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
+      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
+      card20, card5, card11, card17, card24)
+    val player2 = new Player(name, deck2)
+    val board = new Board(player, player2)
+    for(i <- 0 to 9){
+      player2.drawCard()
+    }
+    player2.playCard(board, player2.hand(3))
+    assertEquals(player2.playerBoard.meleeArea.list.length, 1)
+    player2.playCard(board, player2.hand(2))
+    assertEquals(player2.playerBoard.rangerArea.list.length, 1)
+  }
 }

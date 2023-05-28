@@ -9,12 +9,13 @@ import scala.util.Random
 
 /** A class representing a player.
  *
- * A player is defined by its name and deck.
+ * A player is defined by its name, deck and player board.
  *
  * @param name The name of the player.
  * @param deck The deck of the player.
+ * @param playerBoard The 3 areas of the player.
  *
- * @constructor Creates a new player with the specified name and deck.
+ * @constructor Creates a new player with the specified name and deck, and an empty player board.
  *
  * @example
  * {{{

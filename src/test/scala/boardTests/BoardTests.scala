@@ -3,7 +3,6 @@ package boardTests
 
 import board.Board
 import player.Player
-
 import card.Card
 import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
 import card.nonUnitCards.WeatherCard
@@ -59,5 +58,20 @@ class BoardTests extends FunSuite {
     assert(!board.equals(null))
     assertEquals(board.##, board.##)
     assertEquals(board.##, board2.##)
+  }
+
+  test("Weather area can only have 1 card and replaces the previous one"){
+    player1.drawCard()
+    val playerCard1 = player1.hand.head
+    assertEquals(board.weatherArea.list.length, 0)
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.length, 1)
+    assertEquals(board.weatherArea.list.head, playerCard1)
+    player1.drawCard()
+    val playerCard2 = player1.hand.head
+    player1.playCard(board, player1.hand.head)
+    assertEquals(board.weatherArea.list.length, 1)
+    assertEquals(board.weatherArea.list.head, playerCard2)
+    assert(playerCard1 != playerCard2)
   }
 }

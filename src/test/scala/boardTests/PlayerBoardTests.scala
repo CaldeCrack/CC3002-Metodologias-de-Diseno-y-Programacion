@@ -1,88 +1,21 @@
 package cl.uchile.dcc
 package boardTests
 
-import board.Board
-import card.unitCards.{MeleeCard, RangerCard, SiegeCard}
-import card.nonUnitCards.WeatherCard
-import card.Card
-import player.Player
+import board.PlayerBoard
 import munit.FunSuite
 
-import scala.collection.mutable.ListBuffer
 class PlayerBoardTests extends FunSuite {
-  val name = "Player"
-  val card0 = new MeleeCard("Melee0", 2)
-  val card1 = new MeleeCard("Melee1", 3)
-  val card2 = new MeleeCard("Melee2", 4)
-  val card3 = new MeleeCard("Melee3", 5)
-  val card4 = new MeleeCard("Melee4", 6)
-  val card5 = new MeleeCard("Melee5", 7)
-  val card6 = new RangerCard("Ranger0", 2)
-  val card7 = new RangerCard("Ranger1", 3)
-  val card8 = new RangerCard("Ranger2", 4)
-  val card9 = new RangerCard("Ranger3", 5)
-  val card10 = new RangerCard("Ranger4", 6)
-  val card11 = new RangerCard("Ranger5", 7)
-  val card12 = new SiegeCard("Siege0", 2)
-  val card13 = new SiegeCard("Siege1", 3)
-  val card14 = new SiegeCard("Siege2", 4)
-  val card15 = new SiegeCard("Siege3", 5)
-  val card16 = new SiegeCard("Siege4", 6)
-  val card17 = new SiegeCard("Siege5", 7)
-  val card18 = new WeatherCard("Weather0")
-  val card19 = new WeatherCard("Weather2")
-  val card20 = new WeatherCard("Weather4")
-  val card21 = new WeatherCard("Weather6")
-  val card22 = new WeatherCard("Weather8")
-  val card23 = new WeatherCard("Weather10")
-  val card24 = new WeatherCard("Weather12")
-  val _deck: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
-    card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
-    card20, card21, card22, card23, card24)
-
-  var player1: Player = _
-  var player2: Player = _
-  var board: Board = _
+  var playerBoard: PlayerBoard = _
   override def beforeEach(context: BeforeEach): Unit ={
-    val deck1: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
-      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
-      card20, card21, card22, card23, card24)
-    val deck2: ListBuffer[Card] = ListBuffer(card0, card1, card2, card3, card4, card5, card6, card7,
-      card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19,
-      card20, card21, card22, card23, card24)
-    player1 = new Player(name, deck1)
-    player2 = new Player(name, deck2)
-    board = new Board(player1, player2)
+    playerBoard = new PlayerBoard()
   }
 
   test("equals") {
-    val board2 = new Board(player1, player2)
-    assert(board.canEqual(board2))
-    assert(board.equals(board2))
-    assert(!board.equals(null))
-    assertEquals(board.##, board.##)
-    assertEquals(board.##, board2.##)
-  }
-
-  test("Weather area can only have 1 card"){
-    player1.drawCard()
-    assertEquals(board.weatherArea.list.length, 0)
-    player1.playCard(board, player1.hand.head)
-    assertEquals(board.weatherArea.list.length, 1)
-    player1.drawCard()
-    player1.playCard(board, player1.hand.head)
-    assertEquals(board.weatherArea.list.length, 1)
-  }
-
-  test("Weather area changes its only card"){
-    player1.drawCard()
-    val card1 = player1.hand.head
-    player1.playCard(board, player1.hand.head)
-    assertEquals(board.weatherArea.list.head, card1)
-    player1.drawCard()
-    val card2 = player1.hand.head
-    player1.playCard(board, player1.hand.head)
-    assertEquals(board.weatherArea.list.head, card2)
-    assert(card1!=card2)
+    val playerBoard2 = new PlayerBoard()
+    assert(playerBoard.canEqual(playerBoard2))
+    assert(playerBoard.equals(playerBoard2))
+    assert(!playerBoard.equals(null))
+    assertEquals(playerBoard.##, playerBoard.##)
+    assertEquals(playerBoard.##, playerBoard2.##)
   }
 }
