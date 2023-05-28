@@ -9,7 +9,7 @@ import java.util.Objects
  *
  * A WeatherCard is defined by its name.
  *
- * @param name The name of the card.
+ * @param _name The name of the card.
  *
  * @constructor Creates a new WeatherCard with the given name.
  *
@@ -24,7 +24,9 @@ import java.util.Objects
  * @since 1.0
  * @version 1.0
  */
-class WeatherCard(val name: String) extends Card with Equals{
+class WeatherCard(val _name: String) extends Card with Equals{
+  /** Getter for the parameter _name. */
+  def name: String = _name
 
   /** Adds this card to its corresponding area in the board.
    *

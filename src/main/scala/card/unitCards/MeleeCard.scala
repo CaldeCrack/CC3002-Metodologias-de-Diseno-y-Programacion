@@ -25,7 +25,6 @@ import java.util.Objects
  * @version 1.0
  */
 class MeleeCard(name: String, strength: Int) extends AbstractUnitCard(name, strength) with Equals{
-
   /** Adds this card to its corresponding area in the board.
    *
    * @example
@@ -40,6 +39,7 @@ class MeleeCard(name: String, strength: Int) extends AbstractUnitCard(name, stre
    * }}}
    */
   override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.meleeArea.list.addOne(this)
+
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

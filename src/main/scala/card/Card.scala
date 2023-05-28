@@ -12,7 +12,7 @@ import board.{Board, PlayerBoard}
  */
 trait Card{
   /** The name of the Card. */
-  val name: String
+  val _name: String
   /** Add the card to the board. */
   def addCard(board: Board, playerBoard: PlayerBoard): Unit
 }
@@ -26,7 +26,7 @@ trait Card{
  */
 trait StrengthCapable{
   /** The strength of the Card. */
-  var _strength: Int
+  private var _strength: Int = _
   /** Add 1 to the actual strength of the card */
   def addStrength(): Unit
   /** Duplicates the actual strength of the card */

@@ -19,8 +19,18 @@ import java.util.Objects
  * @since 1.0
  * @version 1.0
  */
-class PlayerBoard(val meleeArea: MeleeArea = new MeleeArea(), val rangerArea: RangerArea = new RangerArea(),
-                  val siegeArea: SiegeArea = new SiegeArea()) extends Equals {
+class PlayerBoard(val _meleeArea: MeleeArea = new MeleeArea(),
+                  val _rangerArea: RangerArea = new RangerArea(),
+                  val _siegeArea: SiegeArea = new SiegeArea()) extends Equals {
+  /** Getter for the parameter _meleeArea. */
+  def meleeArea: MeleeArea = _meleeArea
+
+  /** Getter for the parameter _meleeArea. */
+  def rangerArea: RangerArea = _rangerArea
+
+  /** Getter for the parameter _meleeArea. */
+  def siegeArea: SiegeArea = _siegeArea
+
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

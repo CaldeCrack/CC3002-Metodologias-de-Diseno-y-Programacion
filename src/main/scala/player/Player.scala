@@ -12,8 +12,8 @@ import scala.util.Random
  * A player is defined by its name, deck and player board.
  *
  * @param name The name of the player.
- * @param deck The deck of the player.
- * @param playerBoard The 3 areas of the player.
+ * @param _deck The deck of the player.
+ * @param _playerBoard The 3 areas of the player.
  *
  * @constructor Creates a new player with the specified name and deck, and an empty player board.
  *
@@ -29,17 +29,29 @@ import scala.util.Random
  * @since 1.0
  * @version 1.0
  */
-class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: PlayerBoard = new PlayerBoard()) extends Equals {
+class Player(val name: String, private var _deck: ListBuffer[Card], private val _playerBoard: PlayerBoard = new PlayerBoard()) extends Equals {
   /** The "lives" of the player */
-  var gems: Int = 2
+  private var _gems: Int = 2
   /** The hand of the player (initially empty) */
-  val hand: ListBuffer[Card] = ListBuffer()
+  private val _hand: ListBuffer[Card] = ListBuffer()
   /** Boolean that states if the player has its hand full of cards (max 10) */
   private var maxHand: Boolean = false
   /** Current amount of cards in the hand */
   private var handAmount: Int = 0
   /** Upper card in the pile of cards of the deck */
   private var curDeck: Int = 24
+
+  /** Getter for the parameter _gems. */
+  def gems: Int = _gems
+
+  /** Getter for the parameter _hand. */
+  def hand: List[Card] = _hand.toList
+
+  /** Getter for the parameter _deck. */
+  def deck: List[Card] = _deck.toList
+
+  /** Getter for the parameter _playerBoard. */
+  def playerBoard: PlayerBoard = _playerBoard
 
   /** Returns if the parameter can equals this object.
    *
@@ -80,7 +92,7 @@ class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: Play
    * println(s"player remaining lives: $gems")
    * }}}
    */
-  def loseGems(): Unit = if(gems>0) gems -= 1
+  def loseGems(): Unit = if(gems>0) _gems -= 1
 
   /** player draws a card from its deck to his hand.
    *
@@ -97,10 +109,10 @@ class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: Play
     // If hand is not full then draw a card
     if (!maxHand) {
       // Adds upper card in the deck to the hand
-      hand.addOne(deck.last)
+      _hand.addOne(deck.last)
       handAmount += 1
       // Removes this card from the deck
-      deck.remove(curDeck)
+      _deck.remove(curDeck)
       curDeck -= 1
     }
     // If hand is full change state of [maxHand] to true
@@ -116,7 +128,7 @@ class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: Play
    * player.shuffleDeck()
    * }}}
    */
-  def shuffleDeck(): Unit = deck = Random.shuffle(deck)
+  def shuffleDeck(): Unit = _deck = Random.shuffle(_deck)
 
   /** Plays a card onto the board.
    *
@@ -135,7 +147,7 @@ class Player(val name: String, var deck: ListBuffer[Card], val playerBoard: Play
     card.addCard(board, this.playerBoard)
     // Removes this card from the deck
     handAmount -= 1
-    hand.remove(hand.indexOf(card))
+    _hand.remove(_hand.indexOf(card))
     // After this maxHand will always be false
     maxHand = false
   }
