@@ -13,5 +13,5 @@ import scala.collection.mutable.ListBuffer
  */
 trait Area {
   /**  List of cards of the area */
-  var list: ListBuffer[Card]
+  val list: ListBuffer[Card]
 }
