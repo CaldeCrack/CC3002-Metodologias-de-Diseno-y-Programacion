@@ -41,15 +41,7 @@ class WeatherCard(val _name: String) extends Card with Equals{
    * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = {
-    if(board.weatherArea.list.isEmpty){
-      board.weatherArea.list.addOne(this)
-    }
-    else {
-      board.weatherArea.list.clear()
-      board.weatherArea.list.addOne(this)
-    }
-  }
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = board.weatherArea.addCard(this)
 
   /** Returns if the parameter can equal this object.
    *

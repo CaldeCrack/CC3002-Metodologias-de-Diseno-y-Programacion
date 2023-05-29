@@ -38,7 +38,7 @@ class SiegeCard(name: String, strength: Int) extends AbstractUnitCard(name, stre
    * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.siegeArea.list.addOne(this)
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.siegeArea.addCard(this)
 
   /** Returns if the parameter can equal this object.
    *

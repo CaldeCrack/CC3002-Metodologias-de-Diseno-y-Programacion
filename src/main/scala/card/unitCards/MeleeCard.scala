@@ -38,7 +38,7 @@ class MeleeCard(name: String, strength: Int) extends AbstractUnitCard(name, stre
    * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.meleeArea.list.addOne(this)
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.meleeArea.addCard(this)
 
   /** Returns if the parameter can equal this object.
    *

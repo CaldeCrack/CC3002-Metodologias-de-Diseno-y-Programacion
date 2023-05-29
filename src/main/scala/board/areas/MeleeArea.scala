@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
  *
  * A MeleeArea is defined by its list of melee cards.
  *
- * @param list contains a mutable list of melee cards.
+ * @param _list contains a mutable list of melee cards.
  *
  * @constructor Creates a new MeleeArea with an empty list of melee cards.
  *
@@ -22,7 +22,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-class MeleeArea(list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(list) with Equals {
+class MeleeArea(private val _list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(_list) with Equals {
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

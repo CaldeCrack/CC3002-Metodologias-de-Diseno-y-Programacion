@@ -13,5 +13,7 @@ import scala.collection.mutable.ListBuffer
  */
 trait Area {
   /**  List of cards of the area */
-  val list: ListBuffer[Card]
+  private val _list: ListBuffer[Card] = ListBuffer()
+  /** Adds a card to the area. */
+  def addCard(card: Card): Unit
 }

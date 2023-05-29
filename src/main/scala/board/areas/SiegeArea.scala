@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
  *
  * A SiegeArea is defined by its list of siege cards.
  *
- * @param list contains a mutable list of siege cards.
+ * @param _list contains a mutable list of siege cards.
  *
  * @constructor Creates a new SiegeArea with an empty list of siege cards.
  *
@@ -22,7 +22,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-class SiegeArea(list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(list) with Equals {
+class SiegeArea(private val _list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(_list) with Equals {
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

@@ -38,7 +38,7 @@ class RangerCard(name: String, strength: Int) extends AbstractUnitCard(name, str
    * card1.addCard(board, player1.playerBoard)
    * }}}
    */
-  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.rangerArea.list.addOne(this)
+  override def addCard(board: Board, playerBoard: PlayerBoard): Unit = playerBoard.rangerArea.addCard(this)
 
   /** Returns if the parameter can equal this object.
    *

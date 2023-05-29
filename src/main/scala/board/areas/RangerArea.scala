@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
  *
  * A RangerArea is defined by its list of ranger cards.
  *
- * @param list contains a mutable list of ranger cards.
+ * @param _list contains a mutable list of ranger cards.
  *
  * @constructor Creates a new RangerArea with an empty list of ranger cards.
  *
@@ -22,7 +22,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-class RangerArea(list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(list) with Equals {
+class RangerArea(private val _list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(_list) with Equals {
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.

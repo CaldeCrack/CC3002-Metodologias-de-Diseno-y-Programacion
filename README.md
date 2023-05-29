@@ -37,6 +37,20 @@ table of the game.
 
 ## Tarea 2
 
+The UML diagram was created previously.
+
+Before everything else I made the corrections according to the given feedback:
+- Fixed the gem counter, so it can't get to negative values.
+- Made an abstract class for the unit cards aside from the weather cards.
+- Organized the code with packages.
+- Fixed the implementation of the deck shuffle.
+- Deleted the documentation of the methods equals and hashCode
+
+After this I started implementing the new things that were required for this submission, starting for the new tests
+involving the *Board* and its areas, added tests for *Player* involving playing cards of its hand and the **Equals**
+related tests.
+For the *Board* I only created a test involving the weather cards since the areas are managed by the players themselves,
+and to accomplish an implementation of the game I created the class *PlayerBoard* that represents the areas of each player
 
 
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)

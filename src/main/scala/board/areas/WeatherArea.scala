@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
  *
  * A WeatherArea is defined by its list of weather cards.
  *
- * @param list contains a mutable list of weather cards.
+ * @param _list contains a mutable list of weather cards.
  *
  * @constructor Creates a new RangerArea with an empty list of weather cards.
  *
@@ -22,7 +22,13 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0
  * @version 1.0
  */
-class WeatherArea(list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(list) with Equals {
+class WeatherArea(private val _list: ListBuffer[Card] = ListBuffer()) extends AbstractArea(_list) with Equals {
+  /** Sets the card of the weather area. */
+  override def addCard(card: Card): Unit = {
+    _list.clear()
+    _list.addOne(card)
+  }
+
   /** Returns if the parameter can equal this object.
    *
    * @param that object that is trying to compare to this object.
