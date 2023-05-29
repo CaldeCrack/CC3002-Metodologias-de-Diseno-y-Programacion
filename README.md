@@ -49,9 +49,30 @@ Before everything else I made the corrections according to the given feedback:
 After this I started implementing the new things that were required for this submission, starting for the new tests
 involving the *Board* and its areas, added tests for *Player* involving playing cards of its hand and the **Equals**
 related tests.
-For the *Board* I only created a test involving the weather cards since the areas are managed by the players themselves,
-and to accomplish an implementation of the game I created the class *PlayerBoard* that represents the areas of each player
 
+For the *Board* I only created a test involving the weather cards (for this I created a class *WeatherArea* that extends
+*AbstractArea*) since the areas are managed by the players themselves, and to accomplish a possible implementation of the
+game I created the class *PlayerBoard* that represents the areas of each player which in turn are classes that extend the
+abstract class *AbstractArea* that extends the interface *Area* (for all of these classes I just tested the **Equals**
+related methods since they don't have any other method and are just for organization of the project).
+
+As for the implementation of the classes starting with *Board* I first designed it so in its parameters receives the 2
+players that are going to be playing the game, and also the weather area since its common for both players, then for
+*PlayerBoard* I create an instance of each area (melee, ranger and siege) for the *Player*, finally for the areas I
+created the trait *Area* so every area has a list of cards and can add cards, then *AbstractArea* extends this interface
+and defines the getter for the list of the area and the method **addCard** so *MeleeArea*, *RangerArea*, *SiegeArea* and
+*WeatherArea* extends this abstract class (*WeatherArea* actually overrides the method **addCard** since here there can
+only be one card at a time instead of keep adding more and more like the other areas).
+
+Because of these changes I had to make some adjustments to the code like in the card classes I added the method
+**addCard** making use of **double dispatch**, so it is possible for any card to know where it has to be added, and also
+in the *Player* class adding the method **playCard** that calls the method **addCard** of the chosen card when the player
+wants to play it.
+
+Lastly I declared the scope of some parameters and variables by setting a few of them **private**, I don't think I need
+to set protected parameters or variables considering how I made the code and aside from mutable lists every **val** is
+public since they can't mutate and there is no problem with the default getter, as for mutable lists that are in some
+parameters I created their getters, so it returns a copy of the list that is inmutable.
 
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 
