@@ -11,7 +11,10 @@ class GameController {
   var state: GameState = new InitialState(this)
 
   def startGame(player_1: Player, player_2: Player): Unit = {
-    board = new Board(player_1, player_2)
+    state = new InitialState(this)
+    player1 = player_1
+    player2 = player_2
+    board = new Board(player1, player2)
     state.toPlayerPlayingState()
   }
 
