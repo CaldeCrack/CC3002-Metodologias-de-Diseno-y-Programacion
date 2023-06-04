@@ -2,8 +2,6 @@ package cl.uchile.dcc
 package cardTests
 
 import card.unitCards.MeleeCard
-import board.PlayerBoard
-import player.Player
 import munit.FunSuite
 class MeleeCardTests extends FunSuite {
   val name = "MeleeCard"

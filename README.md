@@ -80,7 +80,8 @@ parameters I created their getters, so it returns a copy of the list that is inm
 ![State Diagram](docs/diagrama-estados.png)
 
 ### Implementation
-First I designed the state diagram so with it I made the implementation of the state classes and controller of the game.
+First I designed the state diagram, and with it, I made the implementation of the state classes and controller of the game
+making use of the state pattern.
 
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 

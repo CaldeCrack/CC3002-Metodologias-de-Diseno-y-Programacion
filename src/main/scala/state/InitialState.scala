@@ -1,6 +1,6 @@
 package cl.uchile.dcc
-package states
+package state
 
-class NewRoundState(context: GameController) extends GameState(context) {
+class InitialState(context: GameController) extends GameState(context) {
   override def toPlayerPlayingState(): Unit = context.state = new PlayerPlayingState(context)
 }
