@@ -74,6 +74,14 @@ to set protected parameters or variables considering how I made the code and asi
 public since they can't mutate and there is no problem with the default getter, as for mutable lists that are in some
 parameters I created their getters, so it returns a copy of the list that is inmutable.
 
+## Tarea 3
+### State Diagram
+
+![State Diagram](docs/diagrama-estados.png)
+
+### Implementation
+First I designed the state diagram so with it I made the implementation of the state classes and controller of the game.
+
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 
 This work is licensed under a
