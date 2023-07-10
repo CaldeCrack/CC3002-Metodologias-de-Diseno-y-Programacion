@@ -1,19 +1,26 @@
 package cl.uchile.dcc
 
-import player.Player
+import player.{Player, WinCondition}
 import board.Board
 import state.{GameState, InitialState}
+import observer.{Observer, Subject}
 
-class GameController {
+class GameController extends Observer[WinCondition]{
   private var player1: Player = _
   private var player2: Player = _
   private var board: Board = _
   var state: GameState = new InitialState(this)
 
+  override def update(subject: Subject[WinCondition], value: WinCondition): Unit = {
+    println(s"Player ${subject.name} has won the game with ${value.name}")
+  }
+
   def startGame(player_1: Player, player_2: Player): Unit = {
     state = new InitialState(this)
     player1 = player_1
     player2 = player_2
+    player1.addObserver(this)
+    player2.addObserver(this)
     board = new Board(player1, player2)
     state.toPlayerPlayingState()
   }

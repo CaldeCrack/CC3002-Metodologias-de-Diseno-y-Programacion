@@ -7,6 +7,8 @@ import java.util.Objects
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
+class WinCondition(val name: String)
+
 /** A class representing a player.
  *
  * A player is defined by its name, deck and player board.
@@ -29,7 +31,8 @@ import scala.util.Random
  * @since 1.0
  * @version 1.0
  */
-class Player(val name: String, private var _deck: ListBuffer[Card], private val _playerBoard: PlayerBoard = new PlayerBoard()) extends Equals {
+class Player(val name: String, private var _deck: ListBuffer[Card], private val _playerBoard: PlayerBoard = new PlayerBoard())
+  extends AbstractSubject[WinCondition] with Equals {
   /** The "lives" of the player */
   private var _gems: Int = 2
   /** The hand of the player (initially empty) */
@@ -40,6 +43,7 @@ class Player(val name: String, private var _deck: ListBuffer[Card], private val 
   private var handAmount: Int = 0
   /** Upper card in the pile of cards of the deck */
   private var curDeck: Int = 24
+
 
   /** Getter for the parameter _gems. */
   def gems: Int = _gems
@@ -92,7 +96,13 @@ class Player(val name: String, private var _deck: ListBuffer[Card], private val 
    * println(s"player remaining lives: $gems")
    * }}}
    */
-  def loseGems(): Unit = if(gems>0) _gems -= 1
+  def loseGems(): Unit = {
+    if(gems>0) {
+      _gems -= 1
+    } else {
+      notifyObservers(new WinCondition("gems"))
+    }
+  }
 
   /** player draws a card from its deck to his hand.
    *
