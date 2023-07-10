@@ -49,6 +49,4 @@ class GameControllerTests extends FunSuite {
     gameController.endRound()
     assertEquals(gameController.state, endGameState)
   }
-
-  // test("There are invalid transitions)
 }

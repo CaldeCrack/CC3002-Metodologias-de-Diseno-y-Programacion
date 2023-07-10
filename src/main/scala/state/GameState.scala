@@ -26,7 +26,7 @@ class GameState(val context: GameController) extends Equals {
   def toEndGameState(): Unit = transitionError("EndGameState")
 
   /** Do an action */
-  def doAction():Unit = ??? // nothing for now
+  // def doAction(): Unit = ??? // nothing for now
 
   /** Trigger a transition error */
   private def transitionError(targetState: String): Unit = {
