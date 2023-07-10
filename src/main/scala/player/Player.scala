@@ -7,6 +7,7 @@ import java.util.Objects
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
+/** A class representing the winning condition of the game */
 class WinCondition(val name: String)
 
 /** A class representing a player.
