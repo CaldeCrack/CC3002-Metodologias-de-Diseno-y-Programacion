@@ -12,6 +12,8 @@ class GameControllerTests extends FunSuite {
   var endRoundState: EndRoundState = _
   var newRoundState: NewRoundState = _
   var endGameState: EndGameState = _
+  var player1: Player = _
+  var player2: Player = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     gameController = new GameController()
@@ -21,11 +23,11 @@ class GameControllerTests extends FunSuite {
     endRoundState = new EndRoundState(gameController)
     newRoundState = new NewRoundState(gameController)
     endGameState = new EndGameState(gameController)
+    player1 = new Player("Andres", ListBuffer())
+    player2 = new Player("PC", ListBuffer())
   }
 
-  test("Every state is accesible"){
-    val player1 = new Player("Player", ListBuffer())
-    val player2 = new Player("PC", ListBuffer())
+  test("Every state is accesible / Observer pattern"){
     assertEquals(gameController.state, initialState)
     gameController.startGame(player1, player2)
     assertEquals(gameController.state, playerPlayingState)
@@ -47,4 +49,6 @@ class GameControllerTests extends FunSuite {
     gameController.endRound()
     assertEquals(gameController.state, endGameState)
   }
+
+  // test("There are invalid transitions)
 }

@@ -7,6 +7,7 @@ trait Observer[T] {
 
 trait Subject[T] {
   val name: String
+  def gems: Int
   def addObserver(observer: Observer[T]): Unit
 
   def notifyObservers(value: T): Unit

@@ -12,7 +12,7 @@ class GameController extends Observer[WinCondition]{
   var state: GameState = new InitialState(this)
 
   override def update(subject: Subject[WinCondition], value: WinCondition): Unit = {
-    println(s"Player ${subject.name} has won the game with ${value.name}")
+    println(s"${subject.name} loses the game")
   }
 
   def startGame(player_1: Player, player_2: Player): Unit = {

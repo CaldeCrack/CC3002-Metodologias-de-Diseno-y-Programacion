@@ -46,7 +46,7 @@ class Player(val name: String, private var _deck: ListBuffer[Card], private val 
 
 
   /** Getter for the parameter _gems. */
-  def gems: Int = _gems
+  override def gems: Int = _gems
 
   /** Getter for the parameter _hand. */
   def hand: List[Card] = _hand.toList
@@ -97,9 +97,10 @@ class Player(val name: String, private var _deck: ListBuffer[Card], private val 
    * }}}
    */
   def loseGems(): Unit = {
-    if(gems>0) {
+    if(gems > 0) {
       _gems -= 1
-    } else {
+    }
+    if(gems == 0) {
       notifyObservers(new WinCondition("gems"))
     }
   }
