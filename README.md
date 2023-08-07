@@ -83,7 +83,7 @@ parameters I created their getters, so it returns a copy of the list that is inm
 
 ### Implementation
 First I designed the state diagram, and with it, I made the implementation of the state classes and controller of the game
-making use of the state pattern.
+making use of the state pattern. Unfortunately after this I didn't made the effects of the cards (but somehow I still got the full score). Lastly I used the observer pattern to imnplement when a player loses all of its gems, resulting in the end of the match.
 
 ![http://creativecommons.org/licenses/by/4.0/](https://i.creativecommons.org/l/by/4.0/88x31.png)
 
