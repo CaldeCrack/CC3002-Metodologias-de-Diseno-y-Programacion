@@ -1,4 +1,4 @@
-# [CC3002] Metodologías de Diseño y Programación
+# [CC3002] Metodologías de Diseño y Programación (Otoño 2023)
 Más conocido como memes. Resoluciones por Andrés Calderón (CaldeCrack).
 ## Gwen't
 ### Tarea 1
