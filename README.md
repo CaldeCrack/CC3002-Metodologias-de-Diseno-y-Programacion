@@ -1,5 +1,7 @@
-# Gwen't
-## Tarea 1
+# [CC3002] Metodologías de Diseño y Programación
+Más conocido como memes. Resoluciones por Andrés Calderón (CaldeCrack).
+## Gwen't
+### Tarea 1
 
 First I designed generic tests for *Player* and *Cards* defining common and edge cases for every variable and method I
 was planning on create to replicate the requested card game, for this purpose I used the testing framework **MUnit** in
@@ -35,7 +37,7 @@ The rest of classes are subclasses of **UnitCard** and **NonUnitCard**, for the 
 the purpose of in the future making a difference between cards with different classifications when I implement the
 table of the game.
 
-## Tarea 2
+### Tarea 2
 
 The UML diagram was created previously.
 
@@ -74,8 +76,8 @@ to set protected parameters or variables considering how I made the code and asi
 public since they can't mutate and there is no problem with the default getter, as for mutable lists that are in some
 parameters I created their getters, so it returns a copy of the list that is inmutable.
 
-## Tarea 3
-### State Diagram
+### Tarea 3
+#### State Diagram
 
 ![State Diagram](docs/diagrama-estados.png)
 
